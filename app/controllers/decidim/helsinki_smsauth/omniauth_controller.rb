@@ -75,15 +75,7 @@ module Decidim
 
         VerifyMobilePhone.call(@form, auth_session) do
           on(:ok) do
-            user = find_user!
-
-            if user && has_school_metadata?(user)
-              flash[:notice] = I18n.t(".signed_in", scope: "decidim.helsinki_smsauth.omniauth.authenticate_user")
-              sign_in_and_redirect(user)
-            else
-              flash[:notice] = I18n.t(".success", scope: "decidim.helsinki_smsauth.omniauth.authenticate_user")
-              redirect_to action: "school_info"
-            end
+            user_registry
           end
 
           on(:invalid) do
@@ -94,11 +86,8 @@ module Decidim
           on(:expired) do
             redirect_to action: "resend_code"
           end
-        end
-      end
 
-      def school_info
-        @form = form(SchoolMetadataForm).instance
+        end
       end
 
       def user_registry
@@ -107,8 +96,6 @@ module Decidim
 
         RegisterByPhone.call(@form) do
           on(:ok) do |new_user|
-            flash[:notice] = I18n.t(".success", scope: "decidim.helsinki_smsauth.omniauth.school_info")
-            update_sessions!(school: @form.school, grade: @form.grade)
             sign_in_and_redirect new_user, event: :authentication
           end
           on(:error) do |_error|
@@ -145,12 +132,12 @@ module Decidim
       # successfully authorized as well.
       def sign_in_and_redirect(resource_or_scope, **args)
         # Add authorization for the user
-        return fail_authorize unless resource_or_scope.is_a?(::Decidim::User) &&
-                                     authorize_user(resource_or_scope)
-
-        reset_auth_session
-
-        super
+        if resource_or_scope.is_a?(::Decidim::User) && authorize_user(resource_or_scope)
+          super
+        else
+          flash.now[:alert] = I18n.t(".error", scope: "decidim.helsinki_smsauth.omniauth.authenticate_user")
+          render action: "sms"
+        end
       end
 
       def access_code
@@ -205,14 +192,12 @@ module Decidim
       def generated_metadata(authorization, phone_number)
         metadata = authorization.metadata || {}
         metadata.merge!({ phone_number: })
-        metadata.merge!({ school: auth_session["school"] }) if metadata["school"].nil?
-        metadata.merge!({ grade: auth_session["grade"] }) if metadata["grade"].nil?
         metadata
       end
 
       def unique_id(user)
         Digest::MD5.hexdigest(
-          "#{::Decidim::HelsinkiSmsauth.country_code[:country]}-#{user.phone_number}-#{Rails.application.secrets.secret_key_base}"
+          "#{::Decidim::HelsinkiSmsauth.country_code}-#{user.phone_number}-#{Rails.application.secrets.secret_key_base}"
         )
       end
 
@@ -329,14 +314,6 @@ module Decidim
         user.update!(
           phone_number: auth_session["phone"]
         )
-      end
-
-      def has_school_metadata?(user)
-        return if user.blank?
-
-        authorization = find_authorization(user)
-
-        metadata_exist_for?(authorization, :school, :grade)
       end
 
       def metadata_exist_for?(authorization, *args)

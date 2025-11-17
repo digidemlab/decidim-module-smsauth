@@ -1,4 +1,4 @@
-<%= form.number_field :phone_number, value: (form.object.phone_number.present? ? "0#{form.object.phone_number}" : nil) %>
+<%= form.telephone_field :phone_number, value: (form.object.phone_number.present? ? "0#{form.object.phone_number}" : nil) %>
 
 <div class="form__wrapper-block">
   <%= form.submit t(".submit"), class:"button button__lg button__primary" %>

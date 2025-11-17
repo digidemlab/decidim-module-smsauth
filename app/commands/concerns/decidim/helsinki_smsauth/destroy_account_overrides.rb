@@ -8,18 +8,21 @@ module Decidim
         private
 
         def destroy_user_account!
-          @user.invalidate_all_sessions!
+          current_user.invalidate_all_sessions!
 
-          @user.name = ""
-          @user.nickname = ""
-          @user.email = ""
-          @user.phone_number = ""
-          @user.delete_reason = @form.delete_reason
-          @user.admin = false if @user.admin?
-          @user.deleted_at = Time.current
-          @user.skip_reconfirmation!
-          @user.avatar.purge
-          @user.save!
+          current_user.name = ""
+          current_user.nickname = ""
+          current_user.email = ""
+          current_user.personal_url = ""
+          current_user.about = ""
+          current_user.notifications_sending_frequency = "none"
+          current_user.phone_number = ""
+          current_user.delete_reason = @form.delete_reason
+          current_user.admin = false if current_user.admin?
+          current_user.deleted_at = Time.current
+          current_user.skip_reconfirmation!
+          current_user.avatar.purge
+          current_user.save!
         end
       end
     end

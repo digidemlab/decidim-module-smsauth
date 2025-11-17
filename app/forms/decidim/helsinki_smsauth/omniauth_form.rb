@@ -5,9 +5,9 @@ module Decidim
     class OmniauthForm < Form
       mimic :sms_sign_in
 
-      attribute :phone_number, Integer
+      attribute :phone_number, String
 
-      validates :phone_number, numericality: { greater_than: 0 }, presence: true
+      validates :phone_number, presence: true
     end
   end
 end

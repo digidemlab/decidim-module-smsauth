@@ -32,7 +32,6 @@ module Decidim
 
       def send_verification!
         gateway.deliver_code
-
         gateway.code
       rescue Decidim::Sms::GatewayError => e
         @gateway_error_code = e.error_code
@@ -79,7 +78,7 @@ module Decidim
       end
 
       def auth_code_length
-        @auth_code_length ||= 7
+        @auth_code_length ||= 6
       end
 
       def phone_with_country_code(phone_number)
@@ -87,9 +86,7 @@ module Decidim
       end
 
       def add_zeros(code)
-        return code if code.length == auth_code_length
-
-        ("0" * (auth_code_length - code.length)) + code
+        code.rjust(auth_code_length, '0')
       end
     end
   end

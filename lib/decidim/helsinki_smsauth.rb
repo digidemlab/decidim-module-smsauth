@@ -2,12 +2,12 @@
 
 require "csv"
 require "rubyXL"
+require "phonelib"
 
 require "decidim/helsinki_smsauth/engine"
 require "decidim/helsinki_smsauth/admin"
 require "decidim/helsinki_smsauth/admin_engine"
 require_relative "helsinki_smsauth/authorization"
-require_relative "helsinki_smsauth/verifications"
 require_relative "helsinki_smsauth/mail_interceptors"
 
 module Decidim
@@ -16,13 +16,11 @@ module Decidim
   module HelsinkiSmsauth
     include ActiveSupport::Configurable
 
-    autoload :SchoolMetadata, "decidim/helsinki_smsauth/school_metadata"
     autoload :PhoneNumberFormatter, "decidim/helsinki_smsauth/phone_number_formatter"
 
-    # The country name is neeeded for generating the unique id and the countey code
-    # is the country code being used for sending sms
+    # Default country if no prefix is given by user
     config_accessor :country_code do
-      { country: "FI", code: "+358" }
+      ENV.fetch("SMSAUTH_DEFAULT_COUNTRY", "SE")
     end
 
     # The auto email domain that is used for the generated account emails. If

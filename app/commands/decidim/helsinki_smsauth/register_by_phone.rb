@@ -5,6 +5,7 @@ module Decidim
     class RegisterByPhone < Decidim::Command
       def initialize(form)
         @form = form
+        @phone_number = PhoneNumberFormatter.new(form.phone_number)
       end
 
       def call
@@ -30,7 +31,7 @@ module Decidim
         generated_password = SecureRandom.hex
         Decidim::User.create! do |record|
           record.name = record_name
-          record.nickname = UserBaseEntity.nicknamize(record_name)
+          record.nickname = UserBaseEntity.nicknamize(record_name, current_organization.id)
           record.email = generate_email
           record.password = generated_password
           record.password_confirmation = generated_password
@@ -54,15 +55,15 @@ module Decidim
       end
 
       def generate_email
-        EmailGenerator.new(form.organization, iso_country_name, form.phone_number).generate
+        EmailGenerator.new(form.organization, iso_country_name, formatted_phone_number).generate
       end
 
       def formatted_phone_number
-        PhoneNumberFormatter.new(form.phone_number).format
+        @phone_number.format
       end
 
       def iso_country_name
-        PhoneNumberFormatter.new(form.phone_number).iso_country_name
+        @phone_number.country_code_alpha
       end
 
       def record_name
