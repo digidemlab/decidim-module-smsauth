@@ -60,6 +60,7 @@ en:
           school: School
         name: Login via text message
     helsinki_smsauth:
+      or: Or
       budgets:
         voting:
           index:

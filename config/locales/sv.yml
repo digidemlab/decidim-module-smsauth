@@ -60,6 +60,7 @@ sv:
           school: Skola
         name: Logga in via SMS
     helsinki_smsauth:
+      or: Eller
       budgets:
         voting:
           index:

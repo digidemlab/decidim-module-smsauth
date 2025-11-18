@@ -3,3 +3,19 @@ form input[type='number']::-webkit-inner-spin-button{
   -webkit-appearance: none;
   margin: 0;
 }
+
+.login__phone {
+  margin-top: 2.5rem;
+  text-decoration: underline;
+  color: rgb(var(--secondary-rgb));
+  font-weight: 600;
+}
+
+.login__phone-link {
+  text-decoration: underline;
+  color: rgb(var(--secondary-rgb));
+}
+
+.login__phone-separator {
+  margin: 2.5rem 0;
+}
