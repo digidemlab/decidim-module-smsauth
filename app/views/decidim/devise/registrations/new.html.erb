@@ -25,8 +25,8 @@
 
   <span class="login__info-separator"></span>
 
-  <%= link_to t("decidim.helsinki_smsauth.omniauth.new.title"), decidim_helsinki_smsauth.users_auth_sms_path, class: "login__phone" %>
-  <span class="login__omniauth-separator"><%= t("decidim.helsinki_smsauth.or") %></span>
+  <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone" %>
+  <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
 
   <% cache current_organization do %>
     <%= render "decidim/devise/shared/omniauth_buttons" %>

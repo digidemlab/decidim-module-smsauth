@@ -48,18 +48,18 @@ en:
             used_codes: Used codes
     authorization_handlers:
       admin:
-        helsinki_smsauth_id:
+        smsauth_id:
           help:
           - Administrators can create login codes that teachers or youth workers can
             use for their school class.
-      helsinki_smsauth_id:
+      smsauth_id:
         explanation: Verify your account using a text message code.
         fields:
           grade: Grade level
           phone_number: Phone number
           school: School
         name: Login via text message
-    helsinki_smsauth:
+    smsauth:
       or: Or
       budgets:
         voting:
@@ -237,7 +237,7 @@ en:
     verifications:
       sms:
         decidim:
-          helsinki_smsauth:
+          smsauth:
             verification:
               authorizations:
                 edit:

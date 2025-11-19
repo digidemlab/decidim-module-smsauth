@@ -48,18 +48,18 @@ fi:
             used_codes: Käytettyjä koodeja
     authorization_handlers:
       admin:
-        helsinki_smsauth_id:
+        smsauth_id:
           help:
           - Hallintakäyttäjät voivat luoda kirjautumiskoodeja, joita opettajat ja
             ohjaajat voivat käyttää luokalleen.
-      helsinki_smsauth_id:
+      smsauth_id:
         explanation: Vahvista tilisi tekstiviestikoodin avulla.
         fields:
           grade: Luokka-aste
           phone_number: Puhelinnumero
           school: Koulu
         name: Tekstiviestikirjautuminen
-    helsinki_smsauth:
+    smsauth:
       budgets:
         voting:
           index:
@@ -235,7 +235,7 @@ fi:
     verifications:
       sms:
         decidim:
-          helsinki_smsauth:
+          smsauth:
             verification:
               authorizations:
                 edit:

@@ -16,7 +16,7 @@ shared_context "with infobip gateway" do
 
   let(:dummy_gateway) { double("DummyClass", constantize: dummy_class) }
   before do
-    allow(Decidim::HelsinkiSmsauth).to receive(:country_code).and_return({ country: "FI", code: "+358" })
+    allow(Decidim::Smsauth).to receive(:country_code).and_return({ country: "FI", code: "+358" })
     allow(Decidim.config).to receive(:sms_gateway_service).and_return(dummy_gateway)
     allow(dummy_gateway).to receive(:contantize).and_return(dummy_class)
     allow(SecureRandom).to receive(:random_number).and_return(1_234_567)
@@ -30,10 +30,10 @@ shared_context "with single access code" do
   let!(:signin_code) { create(:signin_code, code: access_code, signin_code_set:) }
 end
 
-shared_context "with helsinki_smsauth_id authorization" do
+shared_context "with smsauth_id authorization" do
   let!(:organization) { create(:organization, omniauth_settings:, available_authorizations:) }
   let!(:user) { create(:user, :confirmed, organization:) }
-  let(:available_authorizations) { ["helsinki_smsauth_id"] }
+  let(:available_authorizations) { ["smsauth_id"] }
   let(:omniauth_settings) do
     {
       "omniauth_settings_sms_enabled" => true,

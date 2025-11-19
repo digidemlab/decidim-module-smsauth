@@ -8,13 +8,13 @@ ruby RUBY_VERSION
 # the Gemfile is copied to the development_app folder (almost) as is.
 base_path = ""
 base_path = "../" if File.basename(__dir__) == "development_app"
-require_relative "#{base_path}lib/decidim/helsinki_smsauth/version"
+require_relative "#{base_path}lib/decidim/smsauth/version"
 
-DECIDIM_VERSION = Decidim::HelsinkiSmsauth.decidim_version
+DECIDIM_VERSION = Decidim::Smsauth.decidim_version
 
 gem "decidim", DECIDIM_VERSION
-gem "decidim-helsinki_smsauth", path: "."
-gem "decidim-sms-infobip", path: "../decidim-sms-infobip"
+gem "decidim-smsauth", path: "."
+gem "decidim-sms-infobip", git: "https://github.com/digidemlab/decidim-sms-infobip"
 
 gem "phonelib", "~> 0.10.13"
 

@@ -48,18 +48,18 @@ sv:
             used_codes: Använda koder
     authorization_handlers:
       admin:
-        helsinki_smsauth_id:
+        smsauth_id:
           help:
           - Administratörer kan skapa inloggningskoder som lärare eller ungdomsarbetare
             kan använda för sin skolklass.
-      helsinki_smsauth_id:
+      smsauth_id:
         explanation: Verifiera ditt konto med en textmeddelandekod.
         fields:
           grade: Årskurs
           phone_number: Telefonnummer
           school: Skola
         name: Logga in via SMS
-    helsinki_smsauth:
+    smsauth:
       or: Eller
       budgets:
         voting:
@@ -235,7 +235,7 @@ sv:
     verifications:
       sms:
         decidim:
-          helsinki_smsauth:
+          smsauth:
             verification:
               authorizations:
                 edit:

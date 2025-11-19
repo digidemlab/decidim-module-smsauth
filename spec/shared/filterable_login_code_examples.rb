@@ -17,7 +17,7 @@ shared_examples "filterable login code" do
   before do
     switch_to_host(organization.host)
     login_as admin, scope: :user
-    visit "admin/helsinki_smsauth_id"
+    visit "admin/smsauth_id"
   end
 
   it "filters based on creator name" do

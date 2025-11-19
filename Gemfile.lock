@@ -7,7 +7,7 @@ PATH
 PATH
   remote: .
   specs:
-    decidim-helsinki_smsauth (0.29.0)
+    decidim-smsauth (0.29.0)
       decidim-core (~> 0.29.0)
 
 GEM
@@ -792,7 +792,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   decidim (~> 0.29.0)
   decidim-dev (~> 0.29.0)
-  decidim-helsinki_smsauth!
+  decidim-smsauth!
   decidim-sms-telia!
   faker (~> 3.2)
   infobip-sms (~> 0.1.3)

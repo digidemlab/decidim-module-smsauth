@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "CodeGenerationVerification" do
-  include_context "with helsinki_smsauth_id authorization"
+  include_context "with smsauth_id authorization"
 
   let!(:admin) { create(:user, :admin, :confirmed, organization:) }
 
@@ -21,11 +21,11 @@ describe "CodeGenerationVerification" do
       end
 
       click_on "Login via text message"
-      expect(page).to have_current_path("/admin/helsinki_smsauth_id/")
+      expect(page).to have_current_path("/admin/smsauth_id/")
       expect(page).to have_content("Alternative login codes")
 
       click_on "Create codes"
-      expect(page).to have_current_path("/admin/helsinki_smsauth_id/signin_codes/new")
+      expect(page).to have_current_path("/admin/smsauth_id/signin_codes/new")
       expect(page).to have_content("Create codes")
 
       click_on "Create"

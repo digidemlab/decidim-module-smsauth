@@ -1,1 +1,1 @@
-import "src/decidim/helsinki_smsauth/newsletter_checkbox"
+import "src/decidim/smsauth/newsletter_checkbox"

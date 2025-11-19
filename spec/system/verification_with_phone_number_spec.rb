@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "PhoneVerification" do
-  include_context "with helsinki_smsauth_id authorization"
+  include_context "with smsauth_id authorization"
   include_context "with infobip gateway"
 
   before do
@@ -51,7 +51,7 @@ describe "PhoneVerification" do
         create(
           :authorization,
           :granted,
-          name: "helsinki_smsauth_id",
+          name: "smsauth_id",
           user: another_user,
           metadata: auth_metadata,
           unique_id: Digest::MD5.hexdigest("FI-4567890-#{Rails.application.secrets.secret_key_base}")
@@ -71,7 +71,7 @@ describe "PhoneVerification" do
 
     it "shows phone number authorization" do
       expect(page).to have_content("Verify your phone number")
-      expect(page).to have_link("Log in with a code given by your teacher or youth worker", href: "/helsinki_smsauth_id/authorizations/access_code")
+      expect(page).to have_link("Log in with a code given by your teacher or youth worker", href: "/smsauth_id/authorizations/access_code")
       click_on "Send code"
       expect(page).to have_content "There is an error in this field."
     end
@@ -83,13 +83,13 @@ describe "PhoneVerification" do
       end
 
       it "generates the authorization process" do
-        expect(page).to have_current_path("/helsinki_smsauth_id/authorizations/edit")
+        expect(page).to have_current_path("/smsauth_id/authorizations/edit")
         within_flash_messages do
           expect(page).to have_content "Thanks! We have sent an SMS to your phone."
         end
 
-        expect(page).to have_link("Resend the code", href: "/helsinki_smsauth_id/authorizations/resend_code")
-        expect(page).to have_link("Re-enter the phone number", href: "/helsinki_smsauth_id/authorizations")
+        expect(page).to have_link("Resend the code", href: "/smsauth_id/authorizations/resend_code")
+        expect(page).to have_link("Re-enter the phone number", href: "/smsauth_id/authorizations")
         fill_in "Login code", with: "wrong code"
         click_on "Continue"
         expect(page).to have_content("Failed to authorize. Please try again.")
@@ -103,7 +103,7 @@ describe "PhoneVerification" do
 
         expect(authorization.metadata["phone_number"]).to eq("+3584567891")
         expect(authorization).not_to be_granted
-        expect(page).to have_current_path("/helsinki_smsauth_id/authorizations/school_info")
+        expect(page).to have_current_path("/smsauth_id/authorizations/school_info")
         visit "/authorizations"
         expect(page).to have_css("section.authorizations-list > div.verification__container-title", text: "PENDING VERIFICATION")
       end
@@ -116,11 +116,11 @@ describe "PhoneVerification" do
         end
 
         it "renders the school info correctly" do
-          expect(page).to have_current_path("/helsinki_smsauth_id/authorizations/school_info")
+          expect(page).to have_current_path("/smsauth_id/authorizations/school_info")
           expect(page).to have_content("Text message verification successful. Please enter few more details and you are done.")
 
           click_on "Save and continue"
-          expect(page).to have_current_path("/helsinki_smsauth_id/authorizations/school_info")
+          expect(page).to have_current_path("/smsauth_id/authorizations/school_info")
           within ".user-person" do
             expect(page).to have_content("There is an error in this field.")
           end

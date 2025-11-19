@@ -1,0 +1,17 @@
+<%= render layout: "layouts/decidim/shared/layout_center" do %>
+  <div class="flex justify-center">
+    <h1 class="title-decorator my-12"><%= t("title", scope: "decidim.smsauth.omniauth.new") %></h1>
+  </div>
+
+  <div class="text-lg text-gray-2">
+    <p>
+      <%= render partial: "phone_instructions" %>
+    </p>
+  </div>
+
+  <%= decidim_form_for(@form, url: users_auth_sms_send_message_path, method: :post) do |form| %>
+    <div class="form__wrapper">
+      <%= render partial: "phone_form", locals: { form: form } %>
+    </div>
+  <% end %>
+<% end %>

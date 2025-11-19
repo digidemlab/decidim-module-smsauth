@@ -10,7 +10,7 @@ describe "AccessCodeLogin" do
   include_context "with single access code"
   before do
     switch_to_host(organization.host)
-    visit_helsinki_smsauth
+    visit_smsauth
     click_on "Log in with a code given by your teacher"
   end
 

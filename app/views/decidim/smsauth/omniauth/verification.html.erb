@@ -1,0 +1,41 @@
+<%= render layout: "layouts/decidim/shared/layout_center" do %>
+  <div class="flex justify-center">
+    <h1 class="title-decorator my-12"><%= current_user ? t("decidim.smsauth.omniauth.verification.authenticate") : t("decidim.smsauth.omniauth.verification.sign_in") %></h1>
+  </div>
+
+  <div class="text-lg text-gray-2">
+    <h2><%= t("decidim.smsauth.omniauth.verification.step_two") %> - <%= t("decidim.smsauth.omniauth.verification.enter_verification_code") %></h2>
+
+    <p class="my-5"><%= t("decidim.smsauth.omniauth.verification.enter_verification_message_html", phone: current_phone_number) %></p>
+
+    <p>
+      <strong><%= t("decidim.smsauth.omniauth.verification.wrong_number") %></strong>
+      <% if user_signed_in? && current_user.phone_number.present? %>
+        <%= link_to t("decidim.smsauth.omniauth.verification.change_number"), users_auth_sms_edit_path, class: "login__phone-link" %>
+      <% else %>
+        <%= link_to t("decidim.smsauth.omniauth.verification.change_number"), users_auth_sms_path, class: "login__phone-link" %>
+      <% end %>
+    </p>
+  </div>
+
+  <p class="my-5"><%= t("decidim.smsauth.omniauth.verification.enter_code_below") %></p>
+
+  <%= decidim_form_for(@form, url: current_user ? users_auth_sms_update_path : users_auth_sms_authenticate_user_path, method: :post) do |form| %>
+    <div class="form__wrapper">
+      <%= render partial: "development_hint" if Rails.env.development? || Rails.env.test? %>
+      <%= form.text_field :verification, autocomplete: "off" %>
+
+      <div class="form__wrapper-block">
+        <%= form.submit t("decidim.smsauth.omniauth.verification.submit"), class: "button button__lg button__primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <span class="login__info-separator login__phone-separator"></span>
+
+  <p>
+    <%= t("decidim.smsauth.omniauth.verification.did_not_receive") %>
+    <br>
+    <%= link_to t("decidim.smsauth.omniauth.verification.resend_code"), users_auth_sms_resend_code_path, class: "login__phone-link" %>
+  </p>
+<% end %>

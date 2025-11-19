@@ -1,1 +1,1 @@
-Phonelib.default_country = ::Decidim::HelsinkiSmsauth.country_code
+Phonelib.default_country = ::Decidim::Smsauth.country_code

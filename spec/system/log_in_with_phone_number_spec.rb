@@ -10,7 +10,7 @@ describe "PhoneLogin" do
 
   before do
     switch_to_host(organization.host)
-    visit_helsinki_smsauth
+    visit_smsauth
   end
 
   it_behaves_like "authenticate with phone process"
@@ -25,7 +25,7 @@ describe "PhoneLogin" do
           create(
             :authorization,
             :granted,
-            name: "helsinki_smsauth_id",
+            name: "smsauth_id",
             user:,
             metadata: auth_metadata
           )

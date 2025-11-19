@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe "AccessCodeVerification" do
-  include_context "with helsinki_smsauth_id authorization"
+  include_context "with smsauth_id authorization"
   include_context "with single access code"
 
   let(:access_code) { "ABCDE12345" }
@@ -24,7 +24,7 @@ describe "AccessCodeVerification" do
 
     it "behaves like verifiable access code" do
       expect(page).to have_content "Verify your account with a code given by your teacher or youth worker"
-      expect(page).to have_link("Return to text message login", href: "/helsinki_smsauth_id/authorizations/new")
+      expect(page).to have_link("Return to text message login", href: "/smsauth_id/authorizations/new")
       expect(page).to have_button("Verify your account")
     end
 

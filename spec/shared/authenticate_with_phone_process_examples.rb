@@ -32,7 +32,7 @@ shared_examples "authenticate with phone process" do
       within ".new_sms_verification" do
         click_on "Log in"
       end
-      expect(page).to have_no_current_path decidim_helsinki_smsauth.users_auth_sms_edit_path
+      expect(page).to have_no_current_path decidim_smsauth.users_auth_sms_edit_path
       within_flash_messages do
         expect(page).to have_no_content("Failed to verify the phone number. Please try again and check that you have entered the login code correctly.")
       end

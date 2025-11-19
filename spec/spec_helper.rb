@@ -8,7 +8,7 @@ Decidim::Dev.dummy_app_path =
   File.expand_path(File.join("spec", "decidim_dummy_app"))
 
 require "decidim/dev/test/base_spec_helper"
-require "decidim/helsinki_smsauth/test/spec_helper"
+require "decidim/smsauth/test/spec_helper"
 
 RSpec.configure do |config|
   config.before do
