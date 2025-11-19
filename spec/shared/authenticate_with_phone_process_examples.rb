@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 shared_examples "authenticate with phone process" do
-  include_context "with telia gateway"
+  include_context "with infobip gateway"
 
   describe "authentication process" do
     it "does the authentication process" do

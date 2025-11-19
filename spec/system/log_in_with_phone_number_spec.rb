@@ -6,7 +6,7 @@ describe "PhoneLogin" do
   let(:organization) { create(:organization) }
   let(:auth_metadata) { { school: "0004", grade: 1, phone_number: "+3584551122334" } }
 
-  include_context "with telia gateway"
+  include_context "with infobip gateway"
 
   before do
     switch_to_host(organization.host)

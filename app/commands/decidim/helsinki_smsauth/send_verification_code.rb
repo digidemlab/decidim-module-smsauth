@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "decidim/sms/telia/gateway"
+require "decidim/sms/infobip/gateway"
 
 module Decidim
   module HelsinkiSmsauth

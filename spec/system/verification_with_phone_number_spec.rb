@@ -4,7 +4,7 @@ require "spec_helper"
 
 describe "PhoneVerification" do
   include_context "with helsinki_smsauth_id authorization"
-  include_context "with telia gateway"
+  include_context "with infobip gateway"
 
   before do
     switch_to_host(organization.host)

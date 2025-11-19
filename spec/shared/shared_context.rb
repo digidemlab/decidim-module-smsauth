@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-shared_context "with telia gateway" do
+shared_context "with infobip gateway" do
   let(:dummy_class) do
     Class.new do
       attr_reader :code

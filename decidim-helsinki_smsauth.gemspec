@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "decidim-core", Decidim::HelsinkiSmsauth.decidim_version
   s.add_dependency "phonelib", "~> 0.10.13"
-  s.add_dependency "decidim-sms-telia", Decidim::HelsinkiSmsauth.decidim_version
+  s.add_dependency "decidim-sms-infobip", Decidim::HelsinkiSmsauth.decidim_version
   s.metadata["rubygems_mfa_required"] = "true"
 end

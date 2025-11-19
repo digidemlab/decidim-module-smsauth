@@ -41,7 +41,7 @@ module Decidim
 
       def send_message
         @form = ::Decidim::HelsinkiSmsauth::OmniauthForm.from_params(params)
-        # in the test, and development environment, and with the telia gateway installation,
+        # in the test, and development environment, and with the infobip gateway installation,
         # we have to set the organization to nil, since the delivery report can not be sent to the
         # localhost. However, we should set this to the current_organization if production
         ::Decidim::HelsinkiSmsauth::SendVerificationCode.call(@form, organization: current_organization) do

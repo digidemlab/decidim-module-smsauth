@@ -14,7 +14,7 @@ DECIDIM_VERSION = Decidim::HelsinkiSmsauth.decidim_version
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-helsinki_smsauth", path: "."
-gem "decidim-sms-telia", path: "../decidim-sms-telia"
+gem "decidim-sms-infobip", path: "../decidim-sms-infobip"
 
 gem "phonelib", "~> 0.10.13"
 
