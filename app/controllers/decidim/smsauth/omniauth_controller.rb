@@ -94,7 +94,7 @@ module Decidim
         user = find_user!
         #@form = SchoolMetadataForm.from_params(user_params.merge(current_locale:, organization: current_organization, user:))
 
-        RegisterByPhone.call(user, current_organization, current_locale) do
+        RegisterByPhone.call(user, auth_session["phone"], current_organization, current_locale) do
           on(:ok) do |new_user|
             sign_in_and_redirect new_user, event: :authentication
           end

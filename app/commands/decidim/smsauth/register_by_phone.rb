@@ -3,11 +3,11 @@
 module Decidim
   module Smsauth
     class RegisterByPhone < Decidim::Command
-      def initialize(user, organization, locale)
+      def initialize(user, phone_number, organization, locale)
         @user = user
         @organization = organization
         @locale = locale
-        @phone_number = PhoneNumberFormatter.new(form.phone_number)
+        @phone_number = PhoneNumberFormatter.new(phone_number)
       end
 
       def call
