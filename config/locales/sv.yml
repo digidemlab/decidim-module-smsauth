@@ -101,6 +101,7 @@ sv:
         phone_form:
           submit: Skicka kod
           invalid_swedish_number: Numret ser inte ut att vara ett giltigt, svenskt mobilnummer. Vänligen kontrollera att du skrivit rätt.
+          error: Någonting gick fel, vänligen försök igen.
         phone_instructions:
           enter_phone_number: Telefonnummer
           step_one: Steg 1/2

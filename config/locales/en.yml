@@ -101,6 +101,7 @@ en:
         phone_form:
           submit: Send code
           invalid_swedish_number: The number does not look like a valid, Swedish mobile phone number. Please verify that you entered your number correctly.
+          error: Something went wrong, please try again.
         phone_instructions:
           enter_phone_number: Phone number
           step_one: Stage 1/2

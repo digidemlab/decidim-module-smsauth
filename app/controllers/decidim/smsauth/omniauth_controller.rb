@@ -99,8 +99,8 @@ module Decidim
             sign_in_and_redirect new_user, event: :authentication
           end
           on(:error) do |_error|
-            flash.now[:alert] = I18n.t(".error", scope: "decidim.smsauth.omniauth.school_info")
-            render action: "school_info"
+            flash.now[:alert] = I18n.t(".error", scope: "decidim.smsauth.omniauth.phone_form")
+            render action: "verification"
           end
         end
       end
