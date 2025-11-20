@@ -3,14 +3,14 @@
 module Decidim
   module Smsauth
     class RegisterByPhone < Decidim::Command
-      def initialize(form)
-        @form = form
+      def initialize(user, organization, locale)
+        @user = user
+        @organization = organization
+        @locale = locale
         @phone_number = PhoneNumberFormatter.new(form.phone_number)
       end
 
       def call
-        return broadcast(:invalid) unless form.valid?
-
         result = update_or_create_user!
         broadcast(:ok, result)
       rescue ActiveRecord::RecordInvalid => e
@@ -19,10 +19,10 @@ module Decidim
 
       private
 
-      attr_reader :form
+      #attr_reader :form
 
       def update_or_create_user!
-        return update_user! if form.user.present?
+        return update_user! if @user.present?
 
         create_user!
       end
@@ -40,22 +40,22 @@ module Decidim
 
           record.phone_number = formatted_phone_number
           record.tos_agreement = "1"
-          record.organization = form.organization
+          record.organization = @organization
           record.newsletter_notifications_at = Time.current
           # record.accepted_tos_version = form.organization.tos_version
-          record.locale = form.current_locale
+          record.locale = @locale
         end
       end
 
       def update_user!
-        return unless form.user
+        return unless @user
 
-        form.user.update!(phone_number: formatted_phone_number)
-        form.user
+        @user.update!(phone_number: formatted_phone_number)
+        @user
       end
 
       def generate_email
-        EmailGenerator.new(form.organization, iso_country_name, formatted_phone_number).generate
+        EmailGenerator.new(@organization, iso_country_name, formatted_phone_number).generate
       end
 
       def formatted_phone_number

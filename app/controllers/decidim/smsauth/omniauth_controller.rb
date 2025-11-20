@@ -92,15 +92,15 @@ module Decidim
 
       def user_registry
         user = find_user!
-        @form = SchoolMetadataForm.from_params(user_params.merge(current_locale:, organization: current_organization, user:))
+        #@form = SchoolMetadataForm.from_params(user_params.merge(current_locale:, organization: current_organization, user:))
 
-        RegisterByPhone.call(@form) do
+        RegisterByPhone.call(user, current_organization, current_locale) do
           on(:ok) do |new_user|
             sign_in_and_redirect new_user, event: :authentication
           end
           on(:error) do |_error|
             flash.now[:alert] = I18n.t(".error", scope: "decidim.smsauth.omniauth.phone_form")
-            render action: "verification"
+            redirect_to action: "verification"
           end
         end
       end
