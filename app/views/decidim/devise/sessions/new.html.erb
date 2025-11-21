@@ -57,8 +57,8 @@
       </div>
 
       <div class="form__wrapper">
-        <% cache current_organization do %>
-          <%# <%= render "decidim/devise/shared/omniauth_buttons" %> %>
+          <%= render "decidim/devise/shared/omniauth_buttons" %>
+          <%#
           <span class="login__omniauth-separator">Eller</span>
           <div style="margin-top: 0" class="login__omniauth">
             <a class="login__omniauth-button button--gbgip" title="Logga in med Göteborgs Stad-konto" rel="nofollow" data-method="post" href="/users/auth/gbgip">
@@ -67,7 +67,7 @@
               </span>
             </a>
           </div>
-        <% end %>
+        %>
       </div>
 
       <div class="login__links">
