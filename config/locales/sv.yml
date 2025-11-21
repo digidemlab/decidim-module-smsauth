@@ -141,6 +141,7 @@ sv:
             koden till dig så snart som möjligt. Om du fortfarande inte får koden,
             försök igen efter ett tag.
           success: Koden har skickats till numret %{phone}.
+        soon: Just nu kan du logga in med e-post och lösenord, men snart kommer du också kunna logga in med ditt telefonnummer och SMS.
         verification:
           already_verified: Ditt användarkonto har redan verifierats via SMS.
           authenticate: Logga in med SMS

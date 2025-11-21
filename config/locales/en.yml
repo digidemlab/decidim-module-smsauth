@@ -141,6 +141,7 @@ en:
             you as soon as possible. If you still don't get the code, try again after
             a while.
           success: The code has been sent to %{phone}.
+        soon: At the moment you can sign in with email and password, but soon you will be able to use your mobile phone number and SMS.
         verification:
           already_verified: Your user account has been already verified via text message.
           authenticate: Log in via text message

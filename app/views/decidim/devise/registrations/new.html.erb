@@ -5,6 +5,12 @@
 <% end %>
 
 <%= render layout: "layouts/decidim/shared/layout_center" do %>
+  <div class="flash info">
+    <div class="flash__message flex items-center">
+      <%= t("decidim.smsauth.omniauth.soon") %>
+    </div>
+  </div>
+
   <div class="flex justify-center">
     <h1 class="title-decorator my-12"><%= t("decidim.devise.registrations.new.sign_up") %></h1>
   </div>
@@ -25,8 +31,10 @@
 
   <span class="login__info-separator"></span>
 
-  <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone" %>
+  <%#
+  <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone"
   <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
+  %>
 
   <% cache current_organization do %>
     <%= render "decidim/devise/shared/omniauth_buttons" %>

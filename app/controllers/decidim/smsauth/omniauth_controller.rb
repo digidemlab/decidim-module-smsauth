@@ -92,7 +92,6 @@ module Decidim
 
       def user_registry
         user = find_user!
-        #@form = SchoolMetadataForm.from_params(user_params.merge(current_locale:, organization: current_organization, user:))
 
         RegisterByPhone.call(user, auth_session["phone"], current_organization, current_locale) do
           on(:ok) do |new_user|
