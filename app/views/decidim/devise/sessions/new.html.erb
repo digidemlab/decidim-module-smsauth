@@ -56,10 +56,15 @@
         <% end %>
       </div>
 
+      <div class="form__wrapper">
+        <% cache current_organization do %>
+          <%= render "decidim/devise/shared/omniauth_buttons" %>
+        <% end %>
+      </div>
+
       <div class="login__links">
         <%= render "decidim/devise/shared/links" %>
       </div>
     <% end %>
-
   <% end %>
 <% end %>
