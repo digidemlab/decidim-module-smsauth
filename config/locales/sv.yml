@@ -142,6 +142,7 @@ sv:
             försök igen efter ett tag.
           success: Koden har skickats till numret %{phone}.
         soon: Just nu kan du logga in med e-post och lösenord, men snart kommer du också kunna logga in med ditt telefonnummer och SMS.
+        no_bankid: Det går inte längre att logga in med BankID. Om du tidigare använt det för att logga in behöver du skapa ett nytt konto med e-post.
         verification:
           already_verified: Ditt användarkonto har redan verifierats via SMS.
           authenticate: Logga in med SMS
