@@ -31,7 +31,7 @@ module Decidim
         generated_password = SecureRandom.hex
         Decidim::User.create! do |record|
           record.name = record_name
-          record.nickname = UserBaseEntity.nicknamize(record_name, current_organization.id)
+          record.nickname = UserBaseEntity.nicknamize(record_name, organization: current_organization)
           record.email = generate_email
           record.password = generated_password
           record.password_confirmation = generated_password
