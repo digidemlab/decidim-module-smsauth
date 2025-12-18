@@ -142,7 +142,7 @@ en:
             a while.
           success: The code has been sent to %{phone}.
         soon: At the moment you can sign in with email and password, but soon you will be able to use your mobile phone number and SMS.
-        no_bankid: It is no longer possible to sign in with BankID. If you previously used BankID to sign in you need to create a new account using an email adress.
+        no_bankid: It is no longer possible to sign in with BankID. If you previously used BankID to sign in you need to create a new account using an email adress or SMS.
         verification:
           already_verified: Your user account has been already verified via text message.
           authenticate: Log in via text message
