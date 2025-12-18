@@ -7,12 +7,6 @@
 <%= render layout: "layouts/decidim/shared/layout_center" do %>
   <div class="flash info">
     <div class="flash__message flex items-center">
-      <%= t("decidim.smsauth.omniauth.soon") %>
-    </div>
-  </div>
-
-  <div class="flash info">
-    <div class="flash__message flex items-center">
       <%= t("decidim.smsauth.omniauth.no_bankid") %>
     </div>
   </div>
@@ -37,10 +31,9 @@
 
   <span class="login__info-separator"></span>
 
-  <%#
-  <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone"
+  <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone" %>
+
   <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
-  %>
 
   <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { id: "register-form" }) do |f| %>
     <%= invisible_captcha %>
