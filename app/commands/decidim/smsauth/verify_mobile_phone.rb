@@ -22,7 +22,7 @@ module Decidim
       attr_accessor :data, :user
 
       def validate!(provided_code)
-        verification_code == provided_code
+        verification_code == provided_code.gsub(/\s+/, "")
       end
 
       def code_still_valid?
