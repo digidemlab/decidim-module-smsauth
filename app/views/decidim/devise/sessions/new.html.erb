@@ -28,12 +28,12 @@
     <% end %>
   </div>
 
-  <span class="login__info-separator"></span>
+  <span class="login__info-separator login__phone-separator"></span>
 
   <% if current_organization.sign_in_enabled? %>
     <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone" %>
 
-    <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
+    <span class="login__omniauth-separator form__wrapper-below"><%= t("decidim.smsauth.or") %></span>
 
     <%= decidim_form_for(resource, namespace: "session", as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form__wrapper">
@@ -51,19 +51,11 @@
         <%= icon "arrow-right-line", class: "fill-current" %>
       </button>
 
-      <div class="form__wrapper">
-          <%= render "decidim/devise/shared/omniauth_buttons" %>
-          <%#
-          <span class="login__omniauth-separator">Eller</span>
-          <div style="margin-top: 0" class="login__omniauth">
-            <a class="login__omniauth-button button--gbgip" title="Logga in med Göteborgs Stad-konto" rel="nofollow" data-method="post" href="/users/auth/gbgip">
-              <span>
-                Logga in med Göteborgs Stad-konto
-              </span>
-            </a>
-          </div>
-        %>
-      </div>
+      <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
+
+      <%= render "decidim/devise/shared/omniauth_buttons" %>
+
+      <span class="login__info-separator login__phone-separator"></span>
 
       <div class="login__links">
         <%= render "decidim/devise/shared/links" %>

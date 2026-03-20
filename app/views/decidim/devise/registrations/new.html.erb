@@ -25,17 +25,17 @@
     </p>
   </div>
 
-  <div class="login__info-required">
-    <%= form_required_explanation %>
-  </div>
-
-  <span class="login__info-separator"></span>
+  <span class="login__info-separator login__phone-separator"></span>
 
   <%= link_to t("decidim.smsauth.omniauth.new.title"), decidim_smsauth.users_auth_sms_path, class: "login__phone" %>
 
   <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
 
   <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { id: "register-form" }) do |f| %>
+    <div class="login__info-required">
+      <%= form_required_explanation %>
+    </div>
+
     <%= invisible_captcha %>
 
     <div class="form__wrapper">
@@ -70,11 +70,13 @@
       </button>
     </div>
 
-    <div class="form__wrapper">
-      <% cache current_organization do %>
-        <%= render "decidim/devise/shared/omniauth_buttons" %>
-      <% end %>
-    </div>
+    <span class="login__omniauth-separator"><%= t("decidim.smsauth.or") %></span>
+
+    <% cache current_organization do %>
+      <%= render "decidim/devise/shared/omniauth_buttons" %>
+    <% end %>
+
+    <span class="login__info-separator login__phone-separator"></span>
 
     <div class="login__links">
       <%= render "decidim/devise/shared/links" %>

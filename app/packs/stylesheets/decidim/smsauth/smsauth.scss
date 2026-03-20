@@ -4,11 +4,16 @@ form input[type='number']::-webkit-inner-spin-button{
   margin: 0;
 }
 
+.login__info {
+  text-align: center;
+}
+
 .login__phone {
-  margin-top: 2.5rem;
   text-decoration: underline;
   color: rgb(var(--secondary-rgb));
   font-weight: 600;
+  text-align: center;
+  display: block;
 }
 
 .login__phone-link {
@@ -18,4 +23,13 @@ form input[type='number']::-webkit-inner-spin-button{
 
 .login__phone-separator {
   margin: 2.5rem 0;
+  display: block;
+}
+
+.login__omniauth-separator {
+  margin: 2.5rem 0;
+}
+
+.form__wrapper-below {
+  margin-bottom: 0;
 }
